@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 450,
+  "title": "Melbourne Cafes & Restaurants – Seats and Types",
+  "projection": {"type": "equalEarth"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {"url": "data/cafes-and-restaurants-with-seating-capacity.csv"},
+      "mark": {"type": "circle", "opacity": 0.8, "tooltip": {"content": "data"}},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "size": {
+          "field": "number_of_seats",
+          "type": "quantitative",
+          "title": "Number of seats",
+          "scale": {"range": [10, 400]}
+        },
+        "color": {
+          "field": "seating_type",
+          "type": "nominal",
+          "title": "Seating type"
+        }
+      }
+    }
+  ]
+}
+
+
