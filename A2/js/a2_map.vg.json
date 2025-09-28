@@ -3,18 +3,24 @@
   "width": 800,
   "height": 450,
   "title": "Melbourne Cafes & Restaurants – Seats and Types",
-  "projection": {"type": "mercator"},
+  "projection": {"type": "mercator", "scale": 500000, "center": [144.9631, -37.8136]},
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/victoriamap.topojson",
+        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/property-boundaries.topojson",
         "format": {"type": "topojson", "feature": "Vicsubs.topojson"}
       },
       "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
     },
     {
-      "data": {"url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/data/cafes-and-restaurants-with-seating-capacity.csv"},
-      "mark": {"type": "circle", "opacity": 0.8, "tooltip": {"content": "data"}},
+      "data": {
+        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/data/cafes-and-restaurants-with-seating-capacity.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.8,
+        "tooltip": {"content": "data"}
+      },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
         "latitude": {"field": "latitude", "type": "quantitative"},
@@ -33,5 +39,3 @@
     }
   ]
 }
-
-
