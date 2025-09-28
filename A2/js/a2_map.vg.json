@@ -1,21 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
-  "height": 450,
+  "width": 1000,
+  "height": 600,
   "title": "Melbourne Cafes & Restaurants – Seats and Types",
   "projection": {
     "type": "mercator",
-    "scale": 500000,
-    "center": [144.9631, -37.8136]
+    "scale": 1000000,
+    "center": [144.9631, -37.8116]
   },
   "layer": [
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/road-corridors.topojson",
-        "format": {"type": "topojson", "feature": "property-boundaries"}
-      },
-      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
-    },
     {
       "data": {
         "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/victoriamap.topojson",
@@ -29,6 +22,13 @@
         "format": {"type": "topojson", "feature": "property-boundaries"}
       },
       "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/road-corridors.topojson",
+        "format": {"type": "topojson", "feature": "road-corridors"}
+      },
+      "mark": {"type": "geoshape", "fill": "darkgray", "stroke": "white"}
     },
     {
       "data": {
