@@ -28,7 +28,16 @@
         "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/road-corridors.topojson",
         "format": {"type": "topojson", "feature": "road-corridors"}
       },
-      "mark": {"type": "geoshape", "fill": "darkgray", "stroke": "white"}
+      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
+      "encoding": {
+        "fill": {
+          "condition": {
+            "test": "datum.properties.str_type === 'River'",
+            "value": "lightblue"
+          },
+          "value": "darkgray"
+        }
+      }
     },
     {
       "data": {
