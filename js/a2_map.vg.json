@@ -5,9 +5,20 @@
   "title": "Melbourne Cafes & Restaurants in 2024 – Seats and Types",
   "projection": {
     "type": "mercator",
-    "scale": 1000000,
-    "center": [144.9631, -37.8116]
+    "scale": {"signal": "view === 'cbd' ? 2500000 : 900000"},
+    "center": {"signal": "view === 'cbd' ? [144.9631, -37.8136] : [144.9611, -37.8116]"}
   },
+  "params": [
+    {
+      "name": "view",
+      "value": "overview",
+      "bind": {
+        "input": "select",
+        "options": ["overview", "cbd"],
+        "name": "View: "
+      }
+    }
+  ],
   "layer": [
     {
       "data": {
@@ -81,6 +92,29 @@
           {"field": "seating_type", "type": "nominal", "title": "Seating Type"},
           {"field": "number_of_seats", "type": "quantitative", "title": "Number of Seats"}
         ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/data/cafes-and-restaurants-with-seating-capacity.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.trading_name === 'Delaware North Australia'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "fill": "black",
+        "dx": 10,
+        "dy": -10
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "trading_name", "type": "nominal"}
       }
     }
   ]
