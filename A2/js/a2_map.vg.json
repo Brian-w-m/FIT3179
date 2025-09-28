@@ -11,7 +11,7 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/road-corridors.geojson",
+        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/road-corridors.topojson",
         "format": {"type": "topojson", "feature": "property-boundaries"}
       },
       "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
