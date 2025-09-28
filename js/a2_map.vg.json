@@ -51,8 +51,7 @@
       },
       "mark": {
         "type": "circle",
-        "opacity": 0.8,
-        "tooltip": {"content": "data"}
+        "opacity": 0.8
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
@@ -74,7 +73,14 @@
             "title": "Seating type",
             "labelExpr": "datum.value === 'Seats - Indoor' ? 'Indoor' : 'Outdoor'"
           }
-        }
+        },
+        "tooltip": [
+          {"field": "trading_name", "type": "nominal", "title": "Name"},
+          {"field": "building_address", "type": "nominal", "title": "Address"},
+          {"field": "industry_anzsic4_description", "type": "nominal", "title": "Description"},
+          {"field": "seating_type", "type": "nominal", "title": "Seating Type"},
+          {"field": "number_of_seats", "type": "quantitative", "title": "Number of Seats"}
+        ]
       }
     }
   ]
