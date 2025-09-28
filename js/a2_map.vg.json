@@ -93,29 +93,6 @@
           {"field": "number_of_seats", "type": "quantitative", "title": "Number of Seats"}
         ]
       }
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/data/cafes-and-restaurants-with-seating-capacity.csv"
-      },
-      "transform": [
-        {
-          "filter": "datum.trading_name === 'Delaware North Australia'"
-        }
-      ],
-      "mark": {
-        "type": "text",
-        "fontSize": 12,
-        "fontWeight": "bold",
-        "fill": "black",
-        "dx": 10,
-        "dy": -10
-      },
-      "encoding": {
-        "longitude": {"field": "longitude", "type": "quantitative"},
-        "latitude": {"field": "latitude", "type": "quantitative"},
-        "text": {"field": "trading_name", "type": "nominal"}
-      }
     }
   ]
 }
