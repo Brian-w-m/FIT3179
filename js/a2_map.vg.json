@@ -11,21 +11,21 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/victoriamap.topojson",
+        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/js/victoriamap.topojson",
         "format": {"type": "topojson", "feature": "Vicsubs.topojson"}
       },
       "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/property-boundaries.topojson",
+        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/js/property-boundaries.topojson",
         "format": {"type": "topojson", "feature": "property-boundaries"}
       },
       "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/js/road-corridors.topojson",
+        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/js/road-corridors.topojson",
         "format": {"type": "topojson", "feature": "road-corridors"}
       },
       "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
@@ -41,7 +41,7 @@
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/A2/data/cafes-and-restaurants-with-seating-capacity.csv"
+        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/data/cafes-and-restaurants-with-seating-capacity.csv"
       },
       "mark": {
         "type": "circle",
