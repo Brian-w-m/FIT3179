@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 1000,
   "height": 600,
-  "title": "Melbourne Cafes & Restaurants – Seats and Types",
+  "title": "Melbourne Cafes & Restaurants in 2024 – Seats and Types",
   "projection": {
     "type": "mercator",
     "scale": 1000000,
@@ -31,11 +31,17 @@
       "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
       "encoding": {
         "fill": {
-          "condition": {
-            "test": "datum.properties.str_type === 'River'",
-            "value": "lightblue"
+          "field": "properties.str_type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["River", "Rail/Tram", "Council Major", "Council Minor", "Private", "Arterial", "Lease/Reserve", "Citylink", "Port Roads", "Road Safety Act", "Citylink2", "Freeway", "Proposed Public", "Undetermined", "Parks Victoria"],
+            "range": ["lightblue", "#b2b7bf", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray"]
           },
-          "value": "darkgray"
+          "legend": {
+            "title": "Infrastructure",
+            "labelExpr": "datum.value === 'River' ? 'River' : datum.value === 'Rail/Tram' ? 'Rail/Tram' : 'Roads'",
+            "values": ["River", "Rail/Tram", "Council Major"]
+          }
         }
       }
     },
@@ -60,7 +66,14 @@
         "color": {
           "field": "seating_type",
           "type": "nominal",
-          "title": "Seating type"
+          "scale": {
+            "domain": ["Seats - Indoor", "Seats - Outdoor"],
+            "range": ["#357ae8", "#FF4D00"]
+          },
+          "legend": {
+            "title": "Seating type",
+            "labelExpr": "datum.value === 'Seats - Indoor' ? 'Indoor' : 'Outdoor'"
+          }
         }
       }
     }
