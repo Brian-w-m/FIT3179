@@ -24,7 +24,7 @@
         "as": "priceLevelFormatted"
       },
       {
-         "calculate": "datum.name == 'Stalactites' ? 'Stalactites' : ''",
+         "calculate": "datum.name == 'Stalactites' ? 'Stalactites' : datum.name == 'Hopetoun Tea Rooms est. 1892' ? 'Hopetoun Tea Rooms' : datum.name == 'Nobu Melbourne' ? 'Nobu Melbourne' : datum.name == 'Operator 25' ? 'Operator 25' : datum.name == 'Supernormal' ? 'Supernormal' : datum.name == 'Rice Paper Scissors' ? 'Rice Paper Scissors' : datum.name == 'Noir' ? 'Noir' : ''",
         "as": "annotation"
       },
       {
@@ -92,7 +92,7 @@
           "dy": -5,
           "fontSize": 12,
           "fontWeight": "bold",
-          "fill": "red"
+          "fill": "black"
         },
         "encoding": {
           "x": {
