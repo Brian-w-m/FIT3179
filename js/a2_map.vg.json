@@ -22,26 +22,26 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/js/victoriamap.topojson",
+        "url": "js/victoriamap.topojson",
         "format": {"type": "topojson", "feature": "Vicsubs.topojson"}
       },
       "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/js/property-boundaries.topojson",
+        "url": "js/property-boundaries.topojson",
         "format": {"type": "topojson", "feature": "property-boundaries"}
       },
       "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/js/road-corridors.topojson",
+        "url": "js/road-corridors.topojson",
         "format": {"type": "topojson", "feature": "road-corridors"}
       },
       "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
       "encoding": {
-        "fill": {
+        "fill": { 
           "field": "properties.str_type",
           "type": "nominal",
           "scale": {
@@ -58,7 +58,7 @@
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/data/cafes-and-restaurants-with-seating-capacity.csv"
+        "url": "data/cafes-and-restaurants-with-seating-capacity.csv"
       },
       "mark": {
         "type": "circle",
@@ -90,7 +90,7 @@
           {"field": "building_address", "type": "nominal", "title": "Address"},
           {"field": "industry_anzsic4_description", "type": "nominal", "title": "Description"},
           {"field": "seating_type", "type": "nominal", "title": "Seating Type"},
-          {"field": "number_of_seats", "type": "quantitative", "title": "Number of Seats"}
+          {"field": "number_of_seats", "type": "quantitative", "title": "Number of Seats", "format": ","}
         ]
       }
     }

@@ -15,11 +15,17 @@
 <body>
   
 <div id="symbol_map"></div>
+<div id="scatter_plot"></div>
 
 <script type="text/javascript">
 
   var spec = "js/a2_map.vg.json";
   vegaEmbed('#symbol_map', spec).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var scatterSpec = "js/scatter_plot.vg.json";
+  vegaEmbed('#scatter_plot', scatterSpec).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
