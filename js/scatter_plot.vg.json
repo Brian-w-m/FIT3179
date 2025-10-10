@@ -1,100 +1,118 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "Scatter plot of restaurant price level vs rating",
-  "data": {
-    "url": "data/melbourne_ta_reviews_with_cuisine.csv"
-  },
-  "params": [{
-    "name": "cuisine",
-    "select": {"type": "point", "fields": ["cuisine"]},
-    "bind": "legend"
-  }],
-  "transform": [
-    {
-      "calculate": "datum.priceLevelNumeric == 1 ? '$' : datum.priceLevelNumeric == 2 ? '$$' : datum.priceLevelNumeric == 3 ? '$$$' : datum.priceLevelNumeric == 4 ? '$$$$' : datum.priceLevelNumeric",
-      "as": "priceLevelFormatted"
-    }
-  ],
-  "mark": {
-    "type": "circle",
-    "opacity": 0.7,
-    "stroke": "black",
-    "strokeWidth": 0.5
-  },
-  "encoding": {
-    "x": {
-      "field": "numberOfReviews",
-      "type": "quantitative",
-      "title": "Number of Reviews",
-      "scale": {
-        "type": "log",
-        "domain": [30, 7000]
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "description": "Scatter plot of restaurant number of reviews vs rating with Stalactites annotation and dropdown cuisine filter",
+    "width": 900,
+    "height": 500,
+    "title": "Restaurant Number of Reviews vs Rating",
+    "params": [
+      {
+        "name": "cuisine_filter",
+        "value": "All",
+       "bind": {
+         "input": "select",
+         "name": "Cuisine: ",
+         "options": [
+           "All",
+           "Italian",
+           "Greek",
+           "Japanese",
+           "Chinese",
+           "Desserts",
+           "Cafe",
+           "Other"
+         ]
+       }
+      }
+    ],
+    "data": {
+      "url": "https://raw.githubusercontent.com/Brian-w-m/FIT3179/main/data/melbourne_ta_reviews_with_cuisine.csv"
+    },
+    "transform": [
+      {
+        "calculate": "datum.priceLevelNumeric == 1 ? '$' : datum.priceLevelNumeric == 2 ? '$$' : datum.priceLevelNumeric == 3 ? '$$$' : datum.priceLevelNumeric == 4 ? '$$$$' : datum.priceLevelNumeric",
+        "as": "priceLevelFormatted"
       },
-      "axis": {
-        "format": ","
-      }
-    },
-    "y": {
-      "field": "rating",
-      "type": "quantitative",
-      "title": "Rating",
-      "scale": {
-        "domain": [2.95, 5],
-        "zero": false
-      }
-    },
-    "color": {
-      "field": "cuisine",
-      "type": "nominal",
-      "title": "Cuisine Type (Interactive Filter)",
-      "scale": {
-        "scheme": "category20"
+      {
+        "calculate": "datum.name == 'Stalactites' ? 'Stalactites' : ''",
+        "as": "annotation"
       },
-      "legend": {
-        "columns": 2,
-        "labelLimit": 100
+      {
+        "filter": "cuisine_filter == 'All' || datum.cuisine == cuisine_filter"
       }
-    },
-    "opacity": {
-      "condition": {"param": "cuisine", "value": 0.7},
-      "value": 0.1
-    },
-    "size": {
-      "field": "priceLevelNumeric",
-      "type": "quantitative",
-      "title": "Price Level",
-      "scale": {
-        "domain": [1, 4],
-        "range": [50, 300]
+    ],
+    "layer": [
+      {
+        "mark": {
+          "type": "circle",
+          "opacity": 0.7,
+          "stroke": "black",
+          "strokeWidth": 0.5
+        },
+        "encoding": {
+          "x": {
+            "field": "numberOfReviews",
+            "type": "quantitative",
+            "title": "Number of Reviews",
+            "scale": {"type": "log", "domain": [30, 7000]},
+            "axis": {"format": ","}
+          },
+          "y": {
+            "field": "rating",
+            "type": "quantitative",
+            "title": "Rating",
+            "scale": {"domain": [2.95, 5], "zero": false}
+          },
+          "color": {
+            "field": "cuisine",
+            "type": "nominal",
+            "title": "Cuisine Type",
+            "scale": {"scheme": "category20"},
+            "legend": {"columns": 2, "labelLimit": 100}
+          },
+          "size": {
+            "field": "priceLevelNumeric",
+            "type": "quantitative",
+            "title": "Price Level",
+            "scale": {"domain": [1, 4], "range": [50, 300]},
+            "legend": {
+              "tickCount": 4,
+              "values": [1, 2, 3, 4],
+              "labelExpr": "datum.value == 1 ? '$' : datum.value == 2 ? '$$' : datum.value == 3 ? '$$$' : datum.value == 4 ? '$$$$' : ''"
+            }
+          },
+          "tooltip": [
+            {"field": "name", "type": "nominal", "title": "Restaurant"},
+            {"field": "priceLevelFormatted", "type": "nominal", "title": "Price Level"},
+            {"field": "rating", "type": "quantitative", "title": "Rating", "format": ".2f"},
+            {"field": "cuisine", "type": "nominal", "title": "Cuisine"},
+            {"field": "numberOfReviews", "type": "quantitative", "title": "Reviews", "format": ","}
+          ]
+        }
       },
-      "legend": {
-        "tickCount": 4,
-        "values": [1, 2, 3, 4],
-        "labelExpr": "datum.value == 1 ? '$' : datum.value == 2 ? '$$' : datum.value == 3 ? '$$$' : datum.value == 4 ? '$$$$' : ''"
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dx": 8,
+          "dy": -5,
+          "fontSize": 12,
+          "fontWeight": "bold",
+          "fill": "red"
+        },
+        "encoding": {
+          "x": {"field": "numberOfReviews", "type": "quantitative"},
+          "y": {"field": "rating", "type": "quantitative"},
+          "text": {"field": "annotation", "type": "nominal"},
+          "opacity": {
+            "condition": {"test": "datum.annotation != ''", "value": 1},
+            "value": 0
+          }
+        }
       }
-    },
-    "tooltip": [
-      {"field": "name", "type": "nominal", "title": "Restaurant"},
-      {"field": "priceLevelFormatted", "type": "nominal", "title": "Price Level"},
-      {"field": "rating", "type": "quantitative", "title": "Rating", "format": ".2f"},
-      {"field": "cuisine", "type": "nominal", "title": "Cuisine"},
-      {"field": "numberOfReviews", "type": "quantitative", "title": "Reviews", "format": ","}
-    ]
-  },
-  "width": 900,
-  "height": 500,
-  "title": {
-    "text": "Restaurant Number of Reviews vs Rating",
-    "fontSize": 16,
-    "anchor": "start"
-  },
-  "config": {
-    "axis": {
-      "titleFontSize": 14,
-      "labelFontSize": 12
-    },
-    "title": {
-      "fontSize": 16
+    ],
+    "config": {
+      "axis": {"titleFontSize": 14, "labelFontSize": 12},
+      "title": {"fontSize": 16}
     }
   }
-}
+  
