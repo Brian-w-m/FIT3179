@@ -11,16 +11,7 @@
        "bind": {
          "input": "select",
          "name": "Cuisine: ",
-         "options": [
-           "All",
-           "Italian",
-           "Greek",
-           "Japanese",
-           "Chinese",
-           "Desserts",
-           "Cafe",
-           "Other"
-         ]
+         "options": ["All", "American", "Australian", "Café", "Chinese", "Dessert", "French", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Middle Eastern", "Seafood", "Thai", "Vietnamese"]
        }
       }
     ],
@@ -33,7 +24,7 @@
         "as": "priceLevelFormatted"
       },
       {
-        "calculate": "datum.name == 'Stalactites' ? 'Stalactites' : ''",
+         "calculate": "datum.name == 'Stalactites' ? 'Stalactites' : ''",
         "as": "annotation"
       },
       {
@@ -53,7 +44,7 @@
             "field": "numberOfReviews",
             "type": "quantitative",
             "title": "Number of Reviews",
-            "scale": {"type": "log", "domain": [30, 7000]},
+             "scale": {"type": "log", "domain": [30, 7000]},
             "axis": {"format": ","}
           },
           "y": {
@@ -62,13 +53,16 @@
             "title": "Rating",
             "scale": {"domain": [2.95, 5], "zero": false}
           },
-          "color": {
-            "field": "cuisine",
-            "type": "nominal",
-            "title": "Cuisine Type",
-            "scale": {"scheme": "category20"},
-            "legend": {"columns": 2, "labelLimit": 100}
-          },
+           "color": {
+             "field": "cuisine",
+             "type": "nominal",
+             "title": "Cuisine Type",
+             "scale": {
+               "scheme": "category20",
+               "domain": ["American", "Australian", "Café", "Chinese", "Dessert", "French", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Middle Eastern", "Seafood", "Thai", "Vietnamese"]
+             },
+             "legend": {"columns": 2, "labelLimit": 100}
+           },
           "size": {
             "field": "priceLevelNumeric",
             "type": "quantitative",
@@ -93,6 +87,7 @@
         "mark": {
           "type": "text",
           "align": "left",
+          "baseline": "top",
           "dx": 8,
           "dy": -5,
           "fontSize": 12,
@@ -100,8 +95,16 @@
           "fill": "red"
         },
         "encoding": {
-          "x": {"field": "numberOfReviews", "type": "quantitative"},
-          "y": {"field": "rating", "type": "quantitative"},
+          "x": {
+            "field": "numberOfReviews", 
+            "type": "quantitative",
+            "scale": {"type": "log", "domain": [30, 7000]}
+          },
+          "y": {
+            "field": "rating", 
+            "type": "quantitative",
+            "scale": {"domain": [2.95, 5], "zero": false}
+          },
           "text": {"field": "annotation", "type": "nominal"},
           "opacity": {
             "condition": {"test": "datum.annotation != ''", "value": 1},
