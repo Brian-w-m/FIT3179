@@ -1,9 +1,14 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "Scatter plot of restaurant price level vs rating",
   "data": {
     "url": "data/melbourne_ta_reviews_with_cuisine.csv"
   },
+  "params": [{
+    "name": "cuisine",
+    "select": {"type": "point", "fields": ["cuisine"]},
+    "bind": "legend"
+  }],
   "transform": [
     {
       "calculate": "datum.priceLevelNumeric == 1 ? '$' : datum.priceLevelNumeric == 2 ? '$$' : datum.priceLevelNumeric == 3 ? '$$$' : datum.priceLevelNumeric == 4 ? '$$$$' : datum.priceLevelNumeric",
@@ -41,7 +46,7 @@
     "color": {
       "field": "cuisine",
       "type": "nominal",
-      "title": "Cuisine Type",
+      "title": "Cuisine Type (Interactive Filter)",
       "scale": {
         "scheme": "category20"
       },
@@ -49,6 +54,10 @@
         "columns": 2,
         "labelLimit": 100
       }
+    },
+    "opacity": {
+      "condition": {"param": "cuisine", "value": 0.7},
+      "value": 0.1
     },
     "size": {
       "field": "priceLevelNumeric",

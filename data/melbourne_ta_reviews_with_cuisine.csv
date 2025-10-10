@@ -44,7 +44,7 @@ Straits Cafe Melbourne,75,$$ - $$$,restaurant,4.6,"Rendezvous Hotel Melbourne 32
 Om Nom,83,$$$$,restaurant,3.7,"187 Flinders Lane Adelphi Hotel, Melbourne, Victoria 3000 Australia",545,Greek,4
 MoVida Aqui,81,$$ - $$$,restaurant,4.3,"Nab Building, 1 500 Bourke St NAB Building, Melbourne, Victoria 3000 Australia",752,French,3
 Cicciolina,62,$$ - $$$,restaurant,4.8,"130 Acland St, Melbourne, Victoria 3182 Australia",375,Thai,2
-Movida Bar de Tapas,72,$$ - $$$,restaurant,4.53,"1 Hosier Lane, Melbourne, Victoria 3000 Australia",2760,Korean,3
+Movida Bar de Tapas,72,$$ - $$$,restaurant,4.53,"1 Hosier Lane, Melbourne, Victoria 3000 Australia",2760,Italian,3
 The Sherlock Holmes,64,$$ - $$$,restaurant,3.73,"415 Collins St, Melbourne, Victoria 3000 Australia",344,Dessert,2
 Rare Steakhouse Downtown,60,$$ - $$$,restaurant,4.06,"42-44 King St, Melbourne, Victoria 3000 Australia",516,American,2
 Rice Paper Scissors,6,$$ - $$$,restaurant,4.6,"15 Hardware Lane, Melbourne, Victoria 3000 Australia",2701,Thai,3
@@ -109,7 +109,7 @@ HQ's On William,122,$$ - $$$,restaurant,3.79,"380 William St Radisson on Flagsta
 Bottega,96,$$$$,restaurant,3.16,"74 Bourke St, Melbourne, Victoria 3000 Australia",405,American,4
 Shanghai Street,121,$,restaurant,3.3,"342 Little Bourke St, Melbourne, Victoria 3000 Australia",595,Italian,1
 Lupino Bistro and Bar,16,$$ - $$$,restaurant,4.7,"41 Little Collins St, Melbourne, Victoria 3000 Australia",416,French,3
-Mamak,116,$,restaurant,4.9,"366 Lonsdale St, Melbourne, Victoria 3000 Australia",514,Chinese,1
+Mamak,116,$,restaurant,4.6,"366 Lonsdale St, Melbourne, Victoria 3000 Australia",514,Chinese,1
 Donovans,1,$$$$,restaurant,3.82,"40 Jacka Boulevard, St Kilda, Port Phillip, Victoria 3182 Australia",1022,Vietnamese,4
 Brick Lane Melbourne,14,$$ - $$$,restaurant,4.6,"33 Guildford Lane, Melbourne, Victoria 3000 Australia",208,French,2
 No35,104,$$$$,restaurant,3.67,"35/25 Collins St Level 35, Melbourne, Victoria 3000 Australia",929,Seafood,4
@@ -157,7 +157,7 @@ Ciao Cielo,159,$$ - $$$,restaurant,4.21,"115 Bay St, Melbourne, Victoria 3207 Au
 Madame Brussels,114,$$ - $$$,restaurant,4.6,"59-63 Bourke St Level 3, Above Spaghetti Tree Restaurant!, Melbourne, Victoria 3000 Australia",461,Vietnamese,3
 Pure South Dining,177,$$$$,restaurant,3.47,"3 Southgate Ave Southbank, Melbourne, Victoria 3006 Australia",927,Thai,4
 Nobu Melbourne,178,$$$$,restaurant,3.47,"Crown Entertainment Complex 8 Whiteman St, Melbourne, Victoria 3006 Australia",1462,Greek,4
-Stalactites,149,$$ - $$$,restaurant,3.88,"177-183 Lonsdale St, Melbourne, Victoria 3000 Australia",1473,Dessert,3
+Stalactites,149,$$ - $$$,restaurant,4.6,"177-183 Lonsdale St, Melbourne, Victoria 3000 Australia",1473,Greek,3
 St Ali Coffee Roasters,111,$$ - $$$,restaurant,3.0,"12-18 Yarra Pl, Melbourne, Victoria 3205 Australia",632,Café,2
 Hofbrauhaus,126,$$ - $$$,restaurant,4.11,"18-26 Market Lane In the heart of Chinatown, Melbourne, Victoria 3000 Australia",475,Seafood,3
 The Lui Bar,113,$$$$,restaurant,4.3,"Rialto L 55 525 Collins St, Melbourne, Victoria 3000 Australia",463,Chinese,4
@@ -392,7 +392,7 @@ Ecco,335,$$ - $$$,restaurant,3.51,"97 Toorak Rd, Melbourne, Victoria 3141 Austra
 George Street Cafe,332,$$ - $$$,restaurant,4.66,"65 George St, Melbourne, Victoria 3002 Australia",66,Café,2
 Collins Kitchen,357,$$$$,restaurant,3.65,"123 Collins St, Melbourne, Victoria 3000 Australia",273,Korean,4
 Lemnos Tavern,4,$$ - $$$,restaurant,4.58,"445 High St, Prahran, Stonnington, Victoria 3181 Australia",113,American,2
-Moroccan Soup Bar,2,$,restaurant,4.67,"183 St Georges Rd, North Fitzroy, Yarra, Victoria 3068 Australia",218,Middle eastern,1
+Moroccan Soup Bar,2,$,restaurant,4.67,"183 St Georges Rd, North Fitzroy, Yarra, Victoria 3068 Australia",218,Middle Eastern,1
 Station Hotel,3,$$ - $$$,restaurant,3.83,"59 Napier St, Footscray, Maribyrnong, Victoria 3011 Australia",352,French,3
 "Borsch, Vodka & Tears",5,$$ - $$$,restaurant,4.48,"173 Chapel St, Windsor, Stonnington, Victoria 3181 Australia",236,Italian,3
 Munich Brauhaus,304,$$ - $$$,restaurant,3.2,"45 South Wharf Promenade, Melbourne, Victoria Australia",1034,Indian,2
