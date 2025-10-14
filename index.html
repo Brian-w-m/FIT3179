@@ -18,6 +18,11 @@
   <div id="symbol_map"></div>
   <div id="scatter_plot"></div>
   <div id="operations_dashboard"></div>
+  <div class="donut-container">
+    <div id="businesses_donut"></div>
+    <div id="employment_donut"></div>
+    <div id="income_donut"></div>
+  </div>
 </div>
 
 <script type="text/javascript">
@@ -34,6 +39,21 @@
 
   var operationsSpec = "js/operations_dashboard.vg.json";
   vegaEmbed('#operations_dashboard', operationsSpec).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var businessesSpec = "js/businesses_donut.vg.json";
+  vegaEmbed('#businesses_donut', businessesSpec).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var employmentSpec = "js/employment_donut.vg.json";
+  vegaEmbed('#employment_donut', employmentSpec).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var incomeSpec = "js/income_donut.vg.json";
+  vegaEmbed('#income_donut', incomeSpec).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>

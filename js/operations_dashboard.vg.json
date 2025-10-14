@@ -52,7 +52,8 @@
           "field": "sector_label",
           "type": "nominal",
           "title": "Sector",
-          "scale": {"range": ["#1f77b4", "#ff7f0e"]}
+          "scale": {"range": ["#1f77b4", "#ff7f0e"]},
+          "legend": null
         },
         "tooltip": [
           {"field": "Category", "title": "Income Source"},

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Total Income by State ($m)",
+  "data": {
+    "url": "data/businesses_2.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.State !== 'Australia'"
+    },
+    {
+      "calculate": "replace(datum['Total income ($m)'], /[,\"]/g, '')",
+      "as": "income_clean"
+    },
+    {
+      "calculate": "parseFloat(datum.income_clean)",
+      "as": "income_numeric"
+    },
+    {
+      "filter": "isValid(datum.income_numeric) && isFinite(datum.income_numeric)"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,
+        "outerRadius": 150,
+        "tooltip": true
+      },
+      "encoding": {
+        "theta": {
+          "field": "income_numeric",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "State",
+          "type": "nominal",
+          "scale": {"scheme": "category20"}
+        },
+        "tooltip": [
+          {"field": "State", "title": "State/Territory"},
+          {"field": "income_numeric", "title": "Total Income", "format": ",.1f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 16,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {"value": "13,673.2"}
+      }
+    }
+  ],
+  "width": 300,
+  "height": 300
+}

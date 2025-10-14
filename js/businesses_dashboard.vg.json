@@ -1,0 +1,141 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Australian Hospitality Industry by State",
+  "hconcat": [
+    {
+      "title": "Businesses by State",
+      "data": {
+        "url": "data/businesses.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.State !== 'Australia'"
+        },
+        {
+          "calculate": "replace(datum.Businesses, /[,\"]/g, '')",
+          "as": "businesses_clean"
+        },
+        {
+          "calculate": "parseFloat(datum.businesses_clean)",
+          "as": "businesses_numeric"
+        },
+        {
+          "filter": "isValid(datum.businesses_numeric) && isFinite(datum.businesses_numeric)"
+        }
+      ],
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,
+        "outerRadius": 150,
+        "tooltip": true
+      },
+      "encoding": {
+        "theta": {
+          "field": "businesses_numeric",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "State",
+          "type": "nominal",
+          "scale": {"scheme": "category20"}
+        },
+        "tooltip": [
+          {"field": "State", "title": "State/Territory"},
+          {"field": "businesses_numeric", "title": "Businesses", "format": ",.0f"}
+        ]
+      },
+      "width": 300,
+      "height": 300
+    },
+    {
+      "title": "Employment by State",
+      "data": {
+        "url": "data/businesses_1.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.State !== 'Australia'"
+        },
+        {
+          "calculate": "replace(datum.Employment, /[,\"]/g, '')",
+          "as": "employment_clean"
+        },
+        {
+          "calculate": "parseFloat(datum.employment_clean)",
+          "as": "employment_numeric"
+        },
+        {
+          "filter": "isValid(datum.employment_numeric) && isFinite(datum.employment_numeric)"
+        }
+      ],
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,
+        "outerRadius": 150,
+        "tooltip": true
+      },
+      "encoding": {
+        "theta": {
+          "field": "employment_numeric",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "State",
+          "type": "nominal",
+          "scale": {"scheme": "category20"}
+        },
+        "tooltip": [
+          {"field": "State", "title": "State/Territory"},
+          {"field": "employment_numeric", "title": "Employment", "format": ",.0f"}
+        ]
+      },
+      "width": 300,
+      "height": 300
+    },
+    {
+      "title": "Total Income by State ($m)",
+      "data": {
+        "url": "data/businesses_2.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.State !== 'Australia'"
+        },
+        {
+          "calculate": "replace(datum['Total income ($m)'], /[,\"]/g, '')",
+          "as": "income_clean"
+        },
+        {
+          "calculate": "parseFloat(datum.income_clean)",
+          "as": "income_numeric"
+        },
+        {
+          "filter": "isValid(datum.income_numeric) && isFinite(datum.income_numeric)"
+        }
+      ],
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,
+        "outerRadius": 150,
+        "tooltip": true
+      },
+      "encoding": {
+        "theta": {
+          "field": "income_numeric",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "State",
+          "type": "nominal",
+          "scale": {"scheme": "category20"}
+        },
+        "tooltip": [
+          {"field": "State", "title": "State/Territory"},
+          {"field": "income_numeric", "title": "Total Income", "format": ",.1f"}
+        ]
+      },
+      "width": 300,
+      "height": 300
+    }
+  ]
+}

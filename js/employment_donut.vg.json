@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Employment by State",
+  "data": {
+    "url": "data/businesses_1.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.State !== 'Australia'"
+    },
+    {
+      "calculate": "replace(datum.Employment, /[,\"]/g, '')",
+      "as": "employment_clean"
+    },
+    {
+      "calculate": "parseFloat(datum.employment_clean)",
+      "as": "employment_numeric"
+    },
+    {
+      "filter": "isValid(datum.employment_numeric) && isFinite(datum.employment_numeric)"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,
+        "outerRadius": 150,
+        "tooltip": true
+      },
+      "encoding": {
+        "theta": {
+          "field": "employment_numeric",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "State",
+          "type": "nominal",
+          "scale": {"scheme": "category20"},
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "State", "title": "State/Territory"},
+          {"field": "employment_numeric", "title": "Employment", "format": ",.0f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 16,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {"value": "195,814"}
+      }
+    }
+  ],
+  "width": 300,
+  "height": 300
+}
