@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
     "description": "Scatter plot of restaurant number of reviews vs rating with Stalactites annotation and dropdown cuisine filter",
-    "width": 900,
+    "width": 850,
     "height": 500,
     "title": "Restaurant Number of Reviews vs Rating",
     "params": [

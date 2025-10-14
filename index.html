@@ -10,20 +10,89 @@
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
   
-  <title>A2 Map</title>
+  <title>Australian Hospitality Industry Dashboard</title>
 </head>
 <body>
   
-<div class="visualization-container">
-  <div id="symbol_map"></div>
-  <div id="scatter_plot"></div>
-  <div id="operations_dashboard"></div>
-  <div class="donut-container">
-    <div id="businesses_donut"></div>
-    <div id="employment_donut"></div>
-    <div id="income_donut"></div>
+<header class="dashboard-header">
+  <h1>🍽️ Australian Hospitality Analytics</h1>
+  <p class="dashboard-subtitle">Comprehensive insights into the thriving hospitality ecosystem across Australia</p>
+  <div class="dashboard-meta">
+    <span>📊 Data Year 2024</span>
+    <span>📍 National Coverage</span>
+    <span>🏢 Multi-Industry Analysis</span>
+    <span>📈 Interactive Dashboard</span>
   </div>
+</header>
+
+<div class="dashboard-container">
+  
+  <!-- Geographic & Performance Analysis -->
+  <section class="dashboard-section">
+    <div class="section-header">
+      <h2>🗺️ Geographic Intelligence & Market Performance</h2>
+      <p>Advanced spatial analytics revealing venue distribution patterns and customer sentiment analysis across Melbourne's dynamic hospitality landscape</p>
+    </div>
+    <div class="chart-full">
+      <h3>📍 Melbourne Venue Heatmap</h3>
+      <div id="symbol_map"></div>
+    </div>
+    <div class="chart-full">
+      <h3>⭐ Customer Sentiment Analysis</h3>
+      <div id="scatter_plot"></div>
+    </div>
+  </section>
+
+  <!-- Financial Performance -->
+  <section class="dashboard-section">
+    <div class="section-header">
+      <h2>💰 Financial Performance Intelligence</h2>
+      <p>Deep dive into revenue streams, cost structures, and profitability metrics across different hospitality business models</p>
+    </div>
+    <div id="operations_dashboard"></div>
+  </section>
+
+  <!-- State Analytics -->
+  <section class="dashboard-section">
+    <div class="section-header">
+      <h2>📊 National Market Distribution</h2>
+      <p>Comprehensive state-by-state breakdown revealing market concentration, employment impact, and revenue generation across Australia's hospitality ecosystem</p>
+    </div>
+    <div class="bottom-section">
+      <div class="donut-container">
+        <div id="businesses_donut"></div>
+        <div id="employment_donut"></div>
+        <div id="income_donut"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insights-section">
+    <div class="insights-header">
+      <h2>🧠 Strategic Intelligence</h2>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card">
+        <h3>🏆 Market Dominance</h3>
+        <p><strong>NSW commands market leadership</strong> with 36% of national businesses, 30% of employment, and 32% of revenue. Victoria maintains strong second position, creating a duopoly in the eastern market.</p>
+      </div>
+      <div class="insight-card">
+        <h3>📈 Profitability Analysis</h3>
+        <p><strong>Catering services achieve superior margins</strong> (5.3% vs 3.8%) through operational efficiency, while cafes & restaurants leverage volume through diversified revenue streams and on-premises dining.</p>
+      </div>
+      <div class="insight-card">
+        <h3>💼 Economic Impact</h3>
+        <p>The hospitality sector generates <strong>$13.7B in revenue</strong> and employs nearly 200,000 Australians, representing 1.5% of national employment and demonstrating significant economic contribution.</p>
+      </div>
+    </div>
+  </section>
+
 </div>
+
+<footer class="dashboard-footer">
+  <p>Data Sources: Australian Bureau of Statistics, Melbourne City Council, TripAdvisor</p>
+  <p>Dashboard created with Vega-Lite | Data Year: 2024</p>
+</footer>
 
 <script type="text/javascript">
 

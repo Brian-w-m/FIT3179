@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1000,
+  "width": 950,
   "height": 600,
   "title": "Melbourne Cafes & Restaurants in 2024 – Seats and Types",
   "projection": {
