@@ -17,4 +17,9 @@
 	width: 100%;
 }
 
+#operations_dashboard {
+	flex: 1;
+	width: 100%;
+}
+
 

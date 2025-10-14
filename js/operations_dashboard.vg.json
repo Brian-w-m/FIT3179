@@ -1,0 +1,129 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1200,
+  "height": 600,
+  "title": "Hospitality Industry Operations Dashboard",
+  "hconcat": [
+    {
+      "title": "Income Breakdown ($m)",
+      "data": {
+        "url": "data/operations_income.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum['Category'] && datum['Category'] !== '' && datum['Category'] !== 'Total'"
+        },
+        {
+          "calculate": "replace(datum['Cafes and restaurants'], /[,\"]/g, '')",
+          "as": "cafes_clean"
+        },
+        {
+          "calculate": "replace(datum['Catering services'], /[,\"]/g, '')",
+          "as": "catering_clean"
+        },
+        {
+          "calculate": "parseFloat(datum.cafes_clean)",
+          "as": "cafes_numeric"
+        },
+        {
+          "calculate": "parseFloat(datum.catering_clean)",
+          "as": "catering_numeric"
+        },
+        {
+          "filter": "isValid(datum.cafes_numeric) && isFinite(datum.cafes_numeric) && isValid(datum.catering_numeric) && isFinite(datum.catering_numeric)"
+        },
+        {"fold": ["cafes_numeric", "catering_numeric"], "as": ["sector", "value"]},
+        {"calculate": "datum.sector === 'cafes_numeric' ? 'Cafes & Restaurants' : 'Catering Services'", "as": "sector_label"}
+      ],
+      "mark": {"type": "bar", "tooltip": true},
+      "encoding": {
+        "x": {
+          "field": "Category",
+          "title": "Income Source",
+          "axis": {"labelAngle": -45, "labelLimit": 120},
+          "sort": ["Meals on Premises", "Takeaway Food", "Catering Services", "Liquor & Beverages", "Other"]
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "title": "Amount ($m)"
+        },
+        "color": {
+          "field": "sector_label",
+          "type": "nominal",
+          "title": "Sector",
+          "scale": {"range": ["#1f77b4", "#ff7f0e"]}
+        },
+        "tooltip": [
+          {"field": "Category", "title": "Income Source"},
+          {"field": "sector_label", "title": "Sector"},
+          {"field": "value", "title": "Amount", "format": ",.1f"}
+        ]
+      },
+      "width": 400,
+      "height": 400
+    },
+    {
+      "title": "Expense Breakdown ($m)",
+      "data": {
+        "url": "data/operations_costs.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum['Category'] && datum['Category'] !== '' && datum['Category'] !== 'Total'"
+        },
+        {
+          "calculate": "replace(datum['Cafes and restaurants'], /[,\"]/g, '')",
+          "as": "cafes_clean"
+        },
+        {
+          "calculate": "replace(datum['Catering services'], /[,\"]/g, '')",
+          "as": "catering_clean"
+        },
+        {
+          "calculate": "parseFloat(datum.cafes_clean)",
+          "as": "cafes_numeric"
+        },
+        {
+          "calculate": "parseFloat(datum.catering_clean)",
+          "as": "catering_numeric"
+        },
+        {
+          "filter": "isValid(datum.cafes_numeric) && isFinite(datum.cafes_numeric) && isValid(datum.catering_numeric) && isFinite(datum.catering_numeric)"
+        },
+        {"fold": ["cafes_numeric", "catering_numeric"], "as": ["sector", "value"]},
+        {"calculate": "datum.sector === 'cafes_numeric' ? 'Cafes & Restaurants' : 'Catering Services'", "as": "sector_label"}
+      ],
+      "mark": {"type": "bar", "tooltip": true},
+      "encoding": {
+        "x": {
+          "field": "Category",
+          "title": "Expense Type",
+          "axis": {"labelAngle": -45, "labelLimit": 120},
+          "sort": ["Labour Costs", "Purchases", "Rent & Leasing", "Other"]
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "title": "Amount ($m)"
+        },
+        "color": {
+          "field": "sector_label",
+          "type": "nominal",
+          "title": "Sector",
+          "scale": {"range": ["#1f77b4", "#ff7f0e"]}
+        },
+        "tooltip": [
+          {"field": "Category", "title": "Expense Type"},
+          {"field": "sector_label", "title": "Sector"},
+          {"field": "value", "title": "Amount", "format": ",.1f"}
+        ]
+      },
+      "width": 400,
+      "height": 400
+    }
+  ],
+  "resolve": {
+    "scale": {"color": "independent"}
+  }
+}

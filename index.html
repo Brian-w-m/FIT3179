@@ -17,6 +17,7 @@
 <div class="visualization-container">
   <div id="symbol_map"></div>
   <div id="scatter_plot"></div>
+  <div id="operations_dashboard"></div>
 </div>
 
 <script type="text/javascript">
@@ -28,6 +29,11 @@
 
   var scatterSpec = "js/scatter_plot.vg.json";
   vegaEmbed('#scatter_plot', scatterSpec).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var operationsSpec = "js/operations_dashboard.vg.json";
+  vegaEmbed('#operations_dashboard', operationsSpec).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
