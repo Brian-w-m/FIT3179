@@ -5,17 +5,32 @@
   "title": "Melbourne Cafes & Restaurants in 2024 – Seats and Types",
   "projection": {
     "type": "mercator",
-    "scale": {"signal": "view === 'cbd' ? 2500000 : 900000"},
-    "center": {"signal": "view === 'cbd' ? [144.9631, -37.8136] : [144.9611, -37.8116]"}
+    "scale": {
+      "signal": "(view === 'Docklands' ? 3000000 : view === 'North Melbourne' ? 2800000 : view === 'Flinders Street' ? 3500000 : view === 'Melbourne Central' ? 3200000 : 900000) * zoom"
+    },
+    "center": {
+      "signal": "view === 'Docklands' ? [144.9440, -37.8165] : view === 'North Melbourne' ? [144.9580, -37.8020] : view === 'Flinders Street' ? [144.9670, -37.8180] : view === 'Melbourne Central' ? [144.9631, -37.8106] : [144.9611, -37.8116]"
+    }
   },
   "params": [
     {
       "name": "view",
-      "value": "overview",
+      "value": "Overview",
       "bind": {
         "input": "select",
-        "options": ["overview", "cbd"],
-        "name": "View: "
+        "options": ["Overview", "Docklands", "North Melbourne", "Flinders Street", "Melbourne Central"],
+        "name": "Location: "
+      }
+    },
+    {
+      "name": "zoom",
+      "value": 1,
+      "bind": {
+        "input": "range",
+        "min": 0.5,
+        "max": 2,
+        "step": 0.1,
+        "name": "Zoom: "
       }
     }
   ],
