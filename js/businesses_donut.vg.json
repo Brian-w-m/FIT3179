@@ -37,7 +37,7 @@
         "color": {
           "field": "State",
           "type": "nominal",
-          "scale": {"scheme": "category20"},
+          "scale": {"range": ["#0072B2", "#56B4E9", "#D55E00", "#FF3B30", "#CC79A7", "#E69F00", "#F0E442", "#666666"]},
           "legend": null
         },
         "tooltip": [

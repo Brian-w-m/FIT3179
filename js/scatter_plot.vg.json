@@ -53,16 +53,33 @@
             "title": "Rating",
             "scale": {"domain": [2.95, 5], "zero": false}
           },
-           "color": {
-             "field": "cuisine",
-             "type": "nominal",
-             "title": "Cuisine Type",
-             "scale": {
-               "scheme": "category20",
-               "domain": ["American", "Australian", "Café", "Chinese", "Dessert", "French", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Middle Eastern", "Seafood", "Thai", "Vietnamese"]
-             },
-             "legend": {"columns": 2, "labelLimit": 100}
-           },
+          "color": {
+            "field": "cuisine",
+            "type": "nominal",
+            "title": "Cuisine Type",
+            "scale": {
+              "domain": ["American", "Australian", "Café", "Chinese", "Dessert", "French", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Middle Eastern", "Seafood", "Thai", "Vietnamese"],
+              "range": [
+                "#1f77b4",   
+                "#FF3B30",   
+                "#9467bd",   
+                "#FFD700",   
+                "#ff7f0e",   
+                "#FFB347",   
+                "#e377c2",   
+                "#f7b6d2",   
+                "#8c564b",   
+                "#C19A6B",   
+                "#17becf",   
+                "#9edae5",   
+                "#7f7f7f",   
+                "#c7c7c7",   
+                "#E69F00",   
+                "#56B4E9"    
+              ]
+            },
+            "legend": {"columns": 2, "labelLimit": 100}
+          },
           "size": {
             "field": "priceLevelNumeric",
             "type": "quantitative",

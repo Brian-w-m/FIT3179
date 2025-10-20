@@ -53,7 +53,7 @@
           "field": "sector_label",
           "type": "nominal",
           "title": "Sector",
-          "scale": {"range": ["#1f77b4", "#ff7f0e"]},
+          "scale": {"range": ["#1E90FF", "#E15759"]},
           "legend": null
         },
         "tooltip": [
@@ -113,7 +113,7 @@
           "field": "sector_label",
           "type": "nominal",
           "title": "Sector",
-          "scale": {"range": ["#1f77b4", "#ff7f0e"]}
+          "scale": {"range": ["#1E90FF", "#E15759"]}
         },
         "tooltip": [
           {"field": "Category", "title": "Expense Type"},

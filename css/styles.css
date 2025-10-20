@@ -1,12 +1,58 @@
 /* Custom multi-select dropdown */
 .multi-dropdown { position: relative; display: inline-block; z-index: 10000; }
-.multi-dropdown > button { padding: 6px 10px; border: 1px solid #ccc; background: #fff; cursor: pointer; border-radius: 4px; }
+.multi-dropdown > button { padding: 8px 12px; border: 1px solid var(--border-color); background: linear-gradient(180deg, #ffffff, #f7fafc); cursor: pointer; border-radius: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.06); transition: all .2s ease; font-weight: 600; color: var(--text-primary); }
+.multi-dropdown > button:hover { box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15); border-color: var(--accent-color); }
+.multi-dropdown > button:after { content: '\25B2'; display: inline-block; margin-left: 8px; font-size: .65rem; transform: rotate(180deg); opacity: .6; }
 .multi-dropdown .menu { display: none; position: absolute; z-index: 10001; background: #fff; border: 1px solid #ccc; border-radius: 4px; max-height: 320px; overflow: auto; min-width: 260px; padding: 6px; box-shadow: 0 6px 16px rgba(0,0,0,0.15); bottom: calc(100% + 6px); left: 0; }
 .multi-dropdown.open .menu { display: block; }
 .multi-dropdown .multi-item { display: flex; align-items: center; gap: 8px; padding: 4px 6px; cursor: pointer; }
 .multi-dropdown .multi-item:hover { background: #f5f5f5; }
 /* Ensure filter row doesn't clip dropdown */
 .filters-row { position: relative; overflow: visible; }
+
+/* Cooler selects for filters and vega binds */
+.filters-row select { 
+  -webkit-appearance: none; -moz-appearance: none; appearance: none;
+  padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-color);
+  background: linear-gradient(180deg, #ffffff, #f7fafc);
+  color: var(--text-primary); font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  transition: all .2s ease;
+}
+.filters-row select:hover { border-color: var(--accent-color); box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12); }
+.filters-row select:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+
+/* Minimal chrome for Vega-Lite bound selects (map & scatterplot) to avoid double borders */
+.vega-bind select {
+  -webkit-appearance: none; -moz-appearance: none; appearance: none;
+  padding: 6px 8px; border: none; border-radius: 8px;
+  background: transparent; color: var(--text-primary);
+  box-shadow: none;
+}
+.vega-bind select:focus { outline: none; box-shadow: none; }
+
+/* Vega-Lite bound inputs container styling */
+.vega-bind { display: inline-flex; align-items: center; gap: 10px; padding: 0 10px 8px 10px; border: none; border-radius: 12px; background: transparent; backdrop-filter: none; box-shadow: none; margin: 8px 0; }
+.vega-bind label, .vega-bind .vega-bind-name { font-weight: 400; color: var(--text-primary); margin-right: 4px; }
+
+/* Make Vega-Lite selects match line chart selects */
+.vega-bind select {
+  -webkit-appearance: none; -moz-appearance: none; appearance: none;
+  padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-color);
+  background: linear-gradient(180deg, #ffffff, #f7fafc);
+  color: var(--text-primary); font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  transition: all .2s ease;
+}
+.vega-bind select:hover { border-color: var(--accent-color); box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12); }
+.vega-bind select:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+
+/* Sliders (map zoom, etc.) */
+.vega-bind input[type=range] { -webkit-appearance: none; width: 160px; height: 6px; border-radius: 999px; background: var(--accent-color); outline: none; }
+.vega-bind input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #ffffff; border: 2px solid var(--accent-color); box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer; }
+.vega-bind input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #ffffff; border: 2px solid var(--accent-color); box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer; }
+.vega-bind input[type=range]::-ms-thumb { width: 16px; height: 16px; border-radius: 50%; background: #ffffff; border: 2px solid var(--accent-color); box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer; }
+
 /* Modern Light Theme Dashboard */
 :root {
   --primary-color: #3b82f6;
