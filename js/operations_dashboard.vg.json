@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "rgba(248, 250, 252, 0.9)",
   "width": 1200,
   "height": 600,
   "title": "Hospitality Industry Operations Dashboard",

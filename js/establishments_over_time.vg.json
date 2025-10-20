@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "rgba(248, 250, 252, 0.9)",
   "title": "Business Establishments Over Time",
   "data": {
     "url": "data/business-establishments-and-jobs-data-by-business-size-and-industry.csv"
