@@ -126,9 +126,48 @@
     </div>
   </section>
 
-  
+  <!-- Retail Turnover (Seasonally Adjusted) -->
+  <section class="dashboard-section">
+    <div class="section-header">
+      <h2>🛍️ Retail Turnover (Seasonally Adjusted)</h2>
+      <p>Annual change as a <strong>line</strong> with monthly change as a <strong>bar</strong>, using ABS seasonally adjusted estimates.</p>
+    </div>
+    <div id="retail_turnover_sa"></div>
+  </section>
+
+  <!-- Online Turnover Density -->
+  <section class="dashboard-section">
+    <div class="section-header">
+      <h2>🛒 Online Turnover Density</h2>
+      <p>The share of monthly retail sales made <strong>online</strong> (Food, Non‑Food, Total) over time—use it to compare e‑commerce adoption and seasonal peaks.</p>
+    </div>
+    <div id="online_density"></div>
+  </section>
+
+  <!-- Turnover Insights (within container for consistent width) -->
+  <section class="insights-section">
+    <div class="insights-header">
+      <h2>🧩 Turnover insights</h2>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card">
+        <h3>📈 Annual vs monthly momentum</h3>
+        <p><strong>Annual change</strong> (line) captures the broader trend, while <strong>monthly change</strong> (bars) shows short‑term volatility. Sustained positives above the zero line signal underlying strength.</p>
+      </div>
+      <div class="insight-card">
+        <h3>🗓️ Seasonality and quarters</h3>
+        <p>Quarterly ticks highlight <strong>Nov–Dec</strong> demand peaks and <strong>post‑holiday</strong> soft patches. Compare peaks across years to see how quickly conditions normalise after shocks.</p>
+      </div>
+      <div class="insight-card">
+        <h3>🛒 Shift to online</h3>
+        <p>Online share is consistently <strong>higher for Non‑Food</strong> than Food. Spikes align with events and holidays; rising baselines suggest a structural shift toward e‑commerce.</p>
+      </div>
+    </div>
+  </section>
 
 </div>
+
+ 
 
 <footer class="dashboard-footer">
   <p>FIT3179 - Brian Wu</p>
@@ -170,6 +209,16 @@
 
   var incomeSpec = "js/income_donut.vg.json";
   vegaEmbed('#income_donut', incomeSpec).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var onlineSpec = "js/online_turnover_density.vg.json";
+  vegaEmbed('#online_density', onlineSpec).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var retailSASpec = "js/retail_turnover_sa.vg.json";
+  vegaEmbed('#retail_turnover_sa', retailSASpec).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 

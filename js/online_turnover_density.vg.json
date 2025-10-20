@@ -1,0 +1,50 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "rgba(248, 250, 252, 0.9)",
+  "title": "Proportion of Industry Group Turnover Online (Over Time)",
+  "width": 900,
+  "height": 380,
+  "data": {
+    "url": "data/Proportion of industry group turnover online, original.csv"
+  },
+  "transform": [
+    {"fold": ["Food (%)", "Non-Food (%)", "Total (%)"], "as": ["Series", "PercentValue"]},
+    {
+      "calculate": "timeParse(datum['Proportion of industry group turnover online, original'],'%b-%y')",
+      "as": "Date"
+    },
+    {"calculate": "datum.PercentValue / 100", "as": "Proportion"}
+  ],
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {
+      "field": "Date",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {"format": "%Y", "tickCount": {"interval": "year", "step": 1}}
+    },
+    "y": {
+      "field": "Proportion",
+      "type": "quantitative",
+      "title": "Proportion Online",
+      "axis": {"format": ".0%"}
+    },
+    "color": {
+      "field": "Series",
+      "type": "nominal",
+      "scale": {"range": ["#1f77b4", "#ff7f0e", "#9467bd"]},
+      "title": "Series"
+    },
+    "tooltip": [
+      {"field": "Date", "type": "temporal", "title": "Month"},
+      {"field": "Series", "type": "nominal"},
+      {"field": "PercentValue", "type": "quantitative", "title": "Percent", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "axis": {"titleFontSize": 14, "labelFontSize": 12},
+    "title": {"fontSize": 16}
+  }
+}
+
+

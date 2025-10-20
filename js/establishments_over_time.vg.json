@@ -24,7 +24,12 @@
   ],
   "mark": {"type": "line", "point": true},
   "encoding": {
-    "x": {"field": "census_year", "type": "quantitative", "title": "Census Year"},
+    "x": {
+      "field": "census_year",
+      "type": "quantitative",
+      "title": "Census Year",
+      "axis": {"format": "d"}
+    },
     "y": {
       "field": "total_establishments",
       "type": "quantitative",

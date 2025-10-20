@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "rgba(248, 250, 252, 0.9)",
+  "title": "Monthly Turnover, Current Prices – Seasonally Adjusted",
+  "data": { "url": "data/Monthly turnover, current prices - seasonally adjusted estimate.csv" },
+  "transform": [
+    { "calculate": "timeParse(datum['Month'], '%b-%y')", "as": "Date" },
+    { "calculate": "+datum['Monthly (%)'] / 100", "as": "MonthlyPct" },
+    { "calculate": "+datum['Through the year (%)'] / 100", "as": "ThroughYearPct" }
+  ],
+  "width": 900,
+  "height": 420,
+  "encoding": {
+    "x": {
+      "field": "Date", "type": "temporal", "title": "Month",
+      "axis": { "format": "%b %Y", "tickCount": { "interval": "month", "step": 3 }, "labelAngle": -40 }
+    },
+    "y": {
+      "type": "quantitative",
+      "title": "Percent change",
+      "axis": { "format": ".0%" },
+      "scale": { "domain": [-0.06, 0.26] }
+    }
+  },
+  "layer": [
+    {
+      "mark": { "type": "line", "point": true },
+      "encoding": {
+        "y": { "field": "ThroughYearPct" },
+        "color": {
+          "datum": "Annual change",
+          "title": "Series",
+          "scale": {
+            "domain": ["Annual change", "Monthly change"],
+            "range": ["#0B61D8", "#87CEFA"]
+          },
+          "legend": {"orient": "right", "direction": "vertical"}
+        },
+        "tooltip": [
+          { "field": "Date", "type": "temporal", "title": "Month" },
+          { "field": "Through the year (%)", "type": "quantitative", "title": "Through-year", "format": ".1f" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "bar", "opacity": 0.9 },
+      "encoding": {
+        "y": { "field": "MonthlyPct" },
+        "color": {
+          "datum": "Monthly change",
+          "scale": {
+            "domain": ["Annual change", "Monthly change"],
+            "range": ["#0B61D8", "#87CEFA"]
+          }
+        },
+        "tooltip": [
+          { "field": "Date", "type": "temporal", "title": "Month" },
+          { "field": "Monthly (%)", "type": "quantitative", "title": "Monthly", "format": ".1f" }
+        ]
+      }
+    }
+  ],
+  
+  "config": {
+    "axis": { "titleFontSize": 14, "labelFontSize": 12 },
+    "title": { "fontSize": 16 }
+  }
+}
+
+
