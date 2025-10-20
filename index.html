@@ -31,7 +31,7 @@
   <section class="dashboard-section">
     <div class="section-header">
       <h2>🗺️ Geographic Intelligence & Market Performance</h2>
-      <p>Advanced spatial analytics revealing venue distribution patterns and customer sentiment analysis across Melbourne's dynamic hospitality landscape</p>
+      <p>Advanced spatial analytics revealing <strong>venue distribution patterns</strong> and customer sentiment across Melbourne's dynamic hospitality landscape</p>
     </div>
     <div class="chart-full">
       <h3>📍 Melbourne Venue Dot Map</h3>
@@ -41,14 +41,44 @@
       <h3>⭐ Customer Sentiment Analysis</h3>
       <div id="scatter_plot"></div>
     </div>
-    <div class="insight-card" style="margin-top: 10px;">
-      <h3>🧭 How to use this scatterplot</h3>
-      <p>
-        Use the Cuisine dropdown to focus on a specific cuisine or compare all together. Each point is a restaurant: its position shows reviews (x-axis, log scale) versus average rating (y-axis). Point size reflects price level ($–$$$$).
-      </p>
-      <p>
-        Try filtering to a cuisine you care about, then look for clusters in the top-right (high rating, many reviews) to find popular, well-rated venues. Labels highlight a few notable restaurants.
-      </p>
+    <div class="insights-grid" style="margin-top: 10px;">
+      <div class="insight-card">
+        <h3>🗺️ How to use the map</h3>
+        <p>
+          Use the location dropdown and zoom slider to focus on areas of interest. Circle size reflects seating capacity and color shows seating type (indoor/outdoor). Zoom in to inspect dense clusters and street contexts.
+        </p>
+      </div>
+      <div class="insight-card">
+        <h3>⭐ How to use the scatterplot</h3>
+        <p>
+          Filter by cuisine to compare restaurants. Read left→right for review volume (log scale) and bottom→top for rating quality. Larger points indicate higher price level. Look for top‑right clusters for popular, high‑rated venues.
+        </p>
+      </div>
+      <div class="insight-card">
+        <h3>📌 Quick facts: Cuisines</h3>
+        <p>
+          • Italian, Japanese, Thai, and Modern Australian are among the most represented cuisines in the CBD.<br/>
+          • Desserts and cafés often earn high ratings with moderate review counts—great for quick wins.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Establishments Over Time -->
+  <section class="dashboard-section">
+    <div class="section-header">
+      <h2>🏢 Establishments Over Time</h2>
+      <p>Sum of total establishments with <strong>interactive filters for year and area</strong>. Use this to compare the number of establishments between industries.</p>
+    </div>
+    <div id="establishments_over_time"></div>
+    <div class="filters-row">
+      <label>Industry:</label>
+      <div class="multi-dropdown" id="industryDropdown">
+        <button type="button" id="industryToggle">Select industries</button>
+        <div class="menu" id="industryMenu"></div>
+      </div>
+      <label for="areaSelect">Area:</label>
+      <select id="areaSelect"></select>
     </div>
   </section>
 
@@ -56,7 +86,7 @@
   <section class="dashboard-section">
     <div class="section-header">
       <h2>💰 Financial Performance Intelligence</h2>
-      <p>Deep dive into revenue streams, cost structures, and profitability metrics across different hospitality business models</p>
+      <p>Deep dive into revenue streams, cost structures, and <strong>profitability metrics</strong> across hospitality business models</p>
     </div>
     <div id="operations_dashboard"></div>
   </section>
@@ -65,7 +95,7 @@
   <section class="dashboard-section">
     <div class="section-header">
       <h2>📊 National Market Distribution</h2>
-      <p>Comprehensive state-by-state breakdown revealing market concentration, employment impact, and revenue generation across Australia's hospitality ecosystem</p>
+      <p>Comprehensive <strong>state-by-state breakdown</strong> revealing market concentration, employment impact, and revenue generation across Australia's hospitality ecosystem</p>
     </div>
     <div class="bottom-section">
       <div class="donut-container">
@@ -96,29 +126,19 @@
     </div>
   </section>
 
-  <!-- Establishments Over Time -->
-  <section class="dashboard-section">
-    <div class="section-header">
-      <h2>🏢 Establishments Over Time</h2>
-      <p>Sum of total establishments with interactive filters for year and area. Use this to compare the number of establishments between different industries and the food and catering industries.</p>
-    </div>
-    <div id="establishments_over_time"></div>
-    <div class="filters-row">
-      <label>Industry:</label>
-      <div class="multi-dropdown" id="industryDropdown">
-        <button type="button" id="industryToggle">Select industries</button>
-        <div class="menu" id="industryMenu"></div>
-      </div>
-      <label for="areaSelect">Area:</label>
-      <select id="areaSelect"></select>
-    </div>
-  </section>
+  
 
 </div>
 
 <footer class="dashboard-footer">
+  <p>FIT3179 - Brian Wu</p>
   <p>Data Sources: Australian Bureau of Statistics, Melbourne City Council, TripAdvisor</p>
-  <p>Dashboard created with Vega-Lite | Data Year: 2024</p>
+    <p>Data links:
+      <a href="https://www.abs.gov.au/statistics/industry/retail-and-wholesale-trade/retail-trade-australia/latest-release" target="_blank" rel="noopener noreferrer">ABS Retail Trade, Australia</a> ·
+      <a href="https://discover.data.vic.gov.au/dataset/cafe-restaurant-bistro-seats" target="_blank" rel="noopener noreferrer">Vic Data: Cafe/Restaurant/Bistro Seats</a> ·
+      <a href="https://www.kaggle.com/datasets/kanchana1990/top-500-melbourne-eateries-tripadvisors-best" target="_blank" rel="noopener noreferrer">Kaggle: Top 500 Melbourne Eateries</a>
+    </p>
+    <p>Dashboard created with Vega-Lite | Data Year: 2024</p>
 </footer>
 
 <script type="text/javascript">
