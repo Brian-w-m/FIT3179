@@ -34,7 +34,7 @@
       <p>Advanced spatial analytics revealing venue distribution patterns and customer sentiment analysis across Melbourne's dynamic hospitality landscape</p>
     </div>
     <div class="chart-full">
-      <h3>📍 Melbourne Venue Heatmap</h3>
+      <h3>📍 Melbourne Venue Dot Map</h3>
       <div id="symbol_map"></div>
     </div>
     <div class="chart-full">
@@ -87,6 +87,24 @@
     </div>
   </section>
 
+  <!-- Establishments Over Time -->
+  <section class="dashboard-section">
+    <div class="section-header">
+      <h2>🏢 Establishments Over Time</h2>
+      <p>Sum of total establishments with interactive filters for year and area. Use this to compare the number of establishments between different industries and the food and catering industries.</p>
+    </div>
+    <div id="establishments_over_time"></div>
+    <div class="filters-row">
+      <label>Industry:</label>
+      <div class="multi-dropdown" id="industryDropdown">
+        <button type="button" id="industryToggle">Select industries</button>
+        <div class="menu" id="industryMenu"></div>
+      </div>
+      <label for="areaSelect">Area:</label>
+      <select id="areaSelect"></select>
+    </div>
+  </section>
+
 </div>
 
 <footer class="dashboard-footer">
@@ -124,6 +142,102 @@
   var incomeSpec = "js/income_donut.vg.json";
   vegaEmbed('#income_donut', incomeSpec).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var establishmentsSpec = "js/establishments_over_time.vg.json";
+  vegaEmbed('#establishments_over_time', establishmentsSpec).then(function(result) {
+    var view = result.view;
+
+    function populateSelect(selectEl, values) {
+      selectEl.innerHTML = '';
+      values.forEach(function(v) {
+        var opt = document.createElement('option');
+        opt.value = v;
+        opt.textContent = v;
+        selectEl.appendChild(opt);
+      });
+    }
+
+    function uniqueFromData(data, field) {
+      var s = new Set();
+      data.forEach(function(d) {
+        if (d[field] !== undefined && d[field] !== null && String(d[field]).length > 0) {
+          s.add(String(d[field]));
+        }
+      });
+      return Array.from(s).sort();
+    }
+
+    // Populate filters after initial render to ensure data is loaded
+    view.runAfter(function() {
+      var data = view.data('source_0') || [];
+      var areas = [
+        'Kensington',
+        'Melbourne (CBD)',
+        'Melbourne (Remainder)',
+        'North Melbourne',
+        'Parkville',
+        'Port Melbourne',
+        'South Yarra',
+        'Southbank',
+        'West Melbourne (Industrial)',
+        'West Melbourne (Residential)',
+        'Carlton',
+        'Docklands',
+        'East Melbourne',
+        'City of Melbourne (total)'
+      ];
+      var industries = uniqueFromData(data, 'clue_industry');
+
+      var areaSelect = document.getElementById('areaSelect');
+      var industryDropdown = document.getElementById('industryDropdown');
+      var industryToggle = document.getElementById('industryToggle');
+      var industryMenu = document.getElementById('industryMenu');
+      populateSelect(areaSelect, areas);
+      // Set default to City of Melbourne (total) if available
+      var defaultArea = 'City of Melbourne (total)';
+      if (areas.indexOf(defaultArea) !== -1) {
+        areaSelect.value = defaultArea;
+        view.signal('areaParam', defaultArea).run();
+      }
+
+      // Build checkbox menu items
+      industryMenu.innerHTML = '';
+      industries.forEach(function(v) {
+        var item = document.createElement('label');
+        item.className = 'multi-item';
+        var cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.value = v;
+        cb.addEventListener('change', function() {
+          var selected = Array.from(industryMenu.querySelectorAll('input[type="checkbox"]:checked')).map(function(x) { return x.value; });
+          view.signal('industryList', selected).run();
+          industryToggle.textContent = 'Select industries';
+        });
+        var span = document.createElement('span');
+        span.textContent = v;
+        item.appendChild(cb);
+        item.appendChild(span);
+        industryMenu.appendChild(item);
+      });
+
+      // Toggle dropdown
+      industryToggle.addEventListener('click', function() {
+        industryDropdown.classList.toggle('open');
+      });
+      document.addEventListener('click', function(e) {
+        if (!industryDropdown.contains(e.target)) {
+          industryDropdown.classList.remove('open');
+        }
+      });
+
+      // Wire up to signals
+      areaSelect.addEventListener('change', function() {
+        view.signal('areaParam', areaSelect.value).run();
+      });
+      // industry list handled via checkbox changes above
+    });
+    
   }).catch(console.error);
 </script>
 

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Business Establishments Over Time",
+  "data": {
+    "url": "data/business-establishments-and-jobs-data-by-business-size-and-industry.csv"
+  },
+  "params": [
+    {
+      "name": "yearBrush",
+      "select": {"type": "interval", "encodings": ["x"]}
+    },
+    {"name": "areaParam", "value": ""},
+    {"name": "industryList", "value": []},
+    {"name": "baselineIndustries", "value": [
+      "Food and Beverage Services",
+      "Food Catering Services"
+    ]}
+  ],
+  "transform": [
+    {"filter": {"param": "yearBrush"}},
+    {"filter": "areaParam == '' || datum.clue_small_area == areaParam"},
+    {"filter": "indexof(baselineIndustries, datum.clue_industry) >= 0 || length(industryList) == 0 || indexof(industryList, datum.clue_industry) >= 0"}
+  ],
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {"field": "census_year", "type": "quantitative", "title": "Census Year"},
+    "y": {
+      "field": "total_establishments",
+      "type": "quantitative",
+      "aggregate": "sum",
+      "title": "Total Establishments"
+    },
+    "color": {
+      "field": "clue_industry",
+      "type": "nominal",
+      "title": "Industry",
+      "scale": {
+        "domain": [
+          "Food and Beverage Services",
+          "Food Catering Services",
+          "Agriculture and Mining",
+          "Manufacturing",
+          "Electricity, Gas, Water",
+          "Construction",
+          "Wholesale Trade",
+          "Retail Trade",
+          "Transport, Postal and Storage",
+          "Information Media",
+          "Finance and Insurance",
+          "Real Estate Services",
+          "Business Services",
+          "Admin and Support Services",
+          "Public Administration and Safety",
+          "Education and Training",
+          "Health Care and Social Assistance",
+          "Arts and Recreation Services",
+          "Other Services"
+        ],
+        "range": [
+          "#1f77b4",  
+          "#17becf",  
+          "#ff7f0e",
+          "#ffbb78",
+          "#984ea3",
+          "#a65628",
+          "#d62728",
+          "#ff9896",
+          "#9467bd",
+          "#c5b0d5",
+          "#8c564b",
+          "#c49c94",
+          "#e377c2",
+          "#f7b6d2",
+          "#7f7f7f",
+          "#c7c7c7",
+          "#bcbd22",
+          "#dbdb8d",
+          "#aec7e8"   
+        ]
+      }
+    },
+    "strokeWidth": {
+      "condition": {
+        "test": "indexof(baselineIndustries, datum.clue_industry) >= 0",
+        "value": 3
+      },
+      "value": 1.5
+    },
+    "opacity": {
+      "condition": {
+        "test": "indexof(baselineIndustries, datum.clue_industry) >= 0",
+        "value": 1
+      },
+      "value": 0.6
+    },
+    "tooltip": [
+      {"field": "census_year", "type": "quantitative", "title": "Year"},
+      {"field": "clue_industry", "type": "nominal", "title": "Industry"},
+      {"field": "total_establishments", "type": "quantitative", "aggregate": "sum", "title": "Total Establishments", "format": ","}
+    ]
+  },
+  "width": 880,
+  "height": 400
+}
+
+

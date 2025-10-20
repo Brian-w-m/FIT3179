@@ -86,7 +86,7 @@
           "field": "number_of_seats",
           "type": "quantitative",
           "title": "Number of seats",
-          "scale": {"range": [10, 400]}
+          "scale": {"range": [{"expr": "10 * zoom"}, {"expr": "400 * zoom"}]}
         },
         "color": {
           "field": "seating_type",
